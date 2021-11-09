@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package ElectionOrganizer;
+option go_package = "https://github.com/antonPalmFolkmann/DISYS_MandatoryAssignment2;DistributedMutualExclusion";
+
+service CriticalSectionService{
+  rpc Election (ElectionRequest) returns (ElectionReply) {}
+  rpc LeaderDeclaration (LeaderRequest) returns (LeaderReply) {}
+  rpc QueueUp (CriticalSectionRequest) returns (CriticalSectionReply) {}
+  rpc GrantAccess (GrantAccessRequest) returns (GrantAccessReply) {}
+  rpc LeaveCriticalSection (LeaveRequest) returns (LeaveReply) {}
+}
+
+message ElectionRequest{
+  string message = 1;
+}
+
+message ElectionReply{
+  string reply = 1; //ok
+}
+
+message LeaderRequest{
+  string port = 1;
+}
+
+message LeaderReply{
+  string reply = 1;
+}
+
+message CriticalSectionRequest{
+  string message = 1;
+}
+
+message CriticalSectionReply {
+  string reply = 1;
+}
+
+message GrantAccessRequest {
+  string message = 1;
+}
+
+message GrantAccessReply {
+  string reply = 1;
+}
+
+message LeaveRequest {
+  string message = 1;
+}
+
+message LeaveReply {
+  string reply = 1;
+}
+
+
+
