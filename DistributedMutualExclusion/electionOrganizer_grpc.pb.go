@@ -22,7 +22,10 @@ type CriticalSectionServiceClient interface {
 	LeaderDeclaration(ctx context.Context, in *LeaderRequest, opts ...grpc.CallOption) (*LeaderReply, error)
 	QueueUp(ctx context.Context, in *CriticalSectionRequest, opts ...grpc.CallOption) (*CriticalSectionReply, error)
 	GrantAccess(ctx context.Context, in *GrantAccessRequest, opts ...grpc.CallOption) (*GrantAccessReply, error)
-	LeaveCriticalSection(ctx context.Context, in *LeaveRequest, opts ...grpc.CallOption) (*LeaveReply, error)
+	LeaveCriticalSection(ctx context.Context, in *LeaveCriticalSectionRequest, opts ...grpc.CallOption) (*LeaveCriticalSectionReply, error)
+	Join(ctx context.Context, in *JoinRequest, opts ...grpc.CallOption) (*JoinReply, error)
+	Leave(ctx context.Context, in *LeaveRequest, opts ...grpc.CallOption) (*LeaveReply, error)
+	UpdatePorts(ctx context.Context, in *UpdatePortsRequest, opts ...grpc.CallOption) (*UpdatePortsReply, error)
 }
 
 type criticalSectionServiceClient struct {
@@ -69,9 +72,36 @@ func (c *criticalSectionServiceClient) GrantAccess(ctx context.Context, in *Gran
 	return out, nil
 }
 
-func (c *criticalSectionServiceClient) LeaveCriticalSection(ctx context.Context, in *LeaveRequest, opts ...grpc.CallOption) (*LeaveReply, error) {
-	out := new(LeaveReply)
+func (c *criticalSectionServiceClient) LeaveCriticalSection(ctx context.Context, in *LeaveCriticalSectionRequest, opts ...grpc.CallOption) (*LeaveCriticalSectionReply, error) {
+	out := new(LeaveCriticalSectionReply)
 	err := c.cc.Invoke(ctx, "/ElectionOrganizer.CriticalSectionService/LeaveCriticalSection", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *criticalSectionServiceClient) Join(ctx context.Context, in *JoinRequest, opts ...grpc.CallOption) (*JoinReply, error) {
+	out := new(JoinReply)
+	err := c.cc.Invoke(ctx, "/ElectionOrganizer.CriticalSectionService/Join", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *criticalSectionServiceClient) Leave(ctx context.Context, in *LeaveRequest, opts ...grpc.CallOption) (*LeaveReply, error) {
+	out := new(LeaveReply)
+	err := c.cc.Invoke(ctx, "/ElectionOrganizer.CriticalSectionService/Leave", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *criticalSectionServiceClient) UpdatePorts(ctx context.Context, in *UpdatePortsRequest, opts ...grpc.CallOption) (*UpdatePortsReply, error) {
+	out := new(UpdatePortsReply)
+	err := c.cc.Invoke(ctx, "/ElectionOrganizer.CriticalSectionService/UpdatePorts", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -86,7 +116,10 @@ type CriticalSectionServiceServer interface {
 	LeaderDeclaration(context.Context, *LeaderRequest) (*LeaderReply, error)
 	QueueUp(context.Context, *CriticalSectionRequest) (*CriticalSectionReply, error)
 	GrantAccess(context.Context, *GrantAccessRequest) (*GrantAccessReply, error)
-	LeaveCriticalSection(context.Context, *LeaveRequest) (*LeaveReply, error)
+	LeaveCriticalSection(context.Context, *LeaveCriticalSectionRequest) (*LeaveCriticalSectionReply, error)
+	Join(context.Context, *JoinRequest) (*JoinReply, error)
+	Leave(context.Context, *LeaveRequest) (*LeaveReply, error)
+	UpdatePorts(context.Context, *UpdatePortsRequest) (*UpdatePortsReply, error)
 	mustEmbedUnimplementedCriticalSectionServiceServer()
 }
 
@@ -106,8 +139,17 @@ func (UnimplementedCriticalSectionServiceServer) QueueUp(context.Context, *Criti
 func (UnimplementedCriticalSectionServiceServer) GrantAccess(context.Context, *GrantAccessRequest) (*GrantAccessReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GrantAccess not implemented")
 }
-func (UnimplementedCriticalSectionServiceServer) LeaveCriticalSection(context.Context, *LeaveRequest) (*LeaveReply, error) {
+func (UnimplementedCriticalSectionServiceServer) LeaveCriticalSection(context.Context, *LeaveCriticalSectionRequest) (*LeaveCriticalSectionReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method LeaveCriticalSection not implemented")
+}
+func (UnimplementedCriticalSectionServiceServer) Join(context.Context, *JoinRequest) (*JoinReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Join not implemented")
+}
+func (UnimplementedCriticalSectionServiceServer) Leave(context.Context, *LeaveRequest) (*LeaveReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Leave not implemented")
+}
+func (UnimplementedCriticalSectionServiceServer) UpdatePorts(context.Context, *UpdatePortsRequest) (*UpdatePortsReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdatePorts not implemented")
 }
 func (UnimplementedCriticalSectionServiceServer) mustEmbedUnimplementedCriticalSectionServiceServer() {
 }
@@ -196,7 +238,7 @@ func _CriticalSectionService_GrantAccess_Handler(srv interface{}, ctx context.Co
 }
 
 func _CriticalSectionService_LeaveCriticalSection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(LeaveRequest)
+	in := new(LeaveCriticalSectionRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -208,7 +250,61 @@ func _CriticalSectionService_LeaveCriticalSection_Handler(srv interface{}, ctx c
 		FullMethod: "/ElectionOrganizer.CriticalSectionService/LeaveCriticalSection",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(CriticalSectionServiceServer).LeaveCriticalSection(ctx, req.(*LeaveRequest))
+		return srv.(CriticalSectionServiceServer).LeaveCriticalSection(ctx, req.(*LeaveCriticalSectionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CriticalSectionService_Join_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(JoinRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CriticalSectionServiceServer).Join(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ElectionOrganizer.CriticalSectionService/Join",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CriticalSectionServiceServer).Join(ctx, req.(*JoinRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CriticalSectionService_Leave_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(LeaveRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CriticalSectionServiceServer).Leave(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ElectionOrganizer.CriticalSectionService/Leave",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CriticalSectionServiceServer).Leave(ctx, req.(*LeaveRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CriticalSectionService_UpdatePorts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdatePortsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CriticalSectionServiceServer).UpdatePorts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ElectionOrganizer.CriticalSectionService/UpdatePorts",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CriticalSectionServiceServer).UpdatePorts(ctx, req.(*UpdatePortsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -239,6 +335,18 @@ var CriticalSectionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "LeaveCriticalSection",
 			Handler:    _CriticalSectionService_LeaveCriticalSection_Handler,
+		},
+		{
+			MethodName: "Join",
+			Handler:    _CriticalSectionService_Join_Handler,
+		},
+		{
+			MethodName: "Leave",
+			Handler:    _CriticalSectionService_Leave_Handler,
+		},
+		{
+			MethodName: "UpdatePorts",
+			Handler:    _CriticalSectionService_UpdatePorts_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

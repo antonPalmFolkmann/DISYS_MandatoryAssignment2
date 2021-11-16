@@ -1,10 +1,12 @@
 package main
 
 import (
+	"bufio"
 	"context"
 	"fmt"
 	"log"
 	"net"
+	"os"
 	"strings"
 	"time"
 
@@ -15,77 +17,134 @@ import (
 
 type Node struct {
 	DistributedMutualExclusion.UnimplementedCriticalSectionServiceServer
-	ports                 []string
-	port                  string
-	leaderPort            string
-	queue                 []string //only for leader
-	nodeInCriticalSection string   //only for leader
-	isInCriticalSection   bool     //for node
+	ports               []string
+	port                string
+	isInCriticalSection bool //for node
 }
 
-func main() {
+var queue []string //only for leader
+var leaderPort string
+var nodeInCriticalSection string //only for leader
+
+/*func main() {
 
 	fmt.Println("Main")
 
-	ports := []string{"1111", "2222", "3333", "4444"}
+	ports := []string{"1111", "2223", "3333", "4444"}
 	fmt.Println("ports created")
 
-	var n1 Node
-	var n2 Node
-	var n3 Node
-	var n4 Node
+	nodes := make([]*Node, 0)
+	fmt.Println("nodes created")
 
-	fmt.Println("nodes declared")
-
-	nodes := []Node{n1, n2, n3, n4}
-
-	fmt.Println("nodes in array")
-
-	for i, n := range nodes {
-		go n.createNode(ports[i], ports)
+	for _, p := range ports {
+		nodes = append(nodes, setNodeValues(p, ports))
 	}
 
 	fmt.Println("Nodes created")
 
-	n1.startElection()
+	nodes[0].startElection()
 
-	go n1.sendQueueUpRequestAfter(100)
-	go n2.sendQueueUpRequestAfter(323)
-	go n3.sendQueueUpRequestAfter(187)
-	go n4.sendQueueUpRequestAfter(245)
+	for i := 0; i < len(nodes); i++ {
+		fmt.Printf("i: %v, node: %v, nodes leaderport: %v <---\n", i, nodes[i].port, nodes[i].leaderPort)
+		go nodes[i].sendQueueUpRequestAfter(56)
+	}
 
 	writeStatus(nodes)
 
+}*/
+
+func main() {
+	// Creat a virtual RPC Client Connection on port  9080 WithInsecure (because  of http)
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Println("Please write your port")
+	input, _ := reader.ReadString('\n')
+	// convert CRLF to LF
+	input = strings.Replace(input, "\n", "", -1)
+
+	var n Node
+	n.port = input
+	n.ports = make([]string, 0)
+	n.isInCriticalSection = false
+
+	//portString := ":" + input
+	// Create listener tcp on port *input*
+	go n.startListen(n.port, n.ports)
+
+	fmt.Println("Please write the leaders port")
+	input2, _ := reader.ReadString('\n')
+	// convert CRLF to LF
+	input2 = strings.Replace(input2, "\n", "", -1)
+	leaderPort = input2
+
+	n.sendJoinRequest()
+
+	if n.port == leaderPort {
+		nodeInCriticalSection = "empty"
+		go n.checkCriticalSection()
+	}
+
+	for {
+
+		input, _ := reader.ReadString('\n')
+		// convert CRLF to LF
+		input = strings.Replace(input, "\n", "", -1)
+
+		if strings.Compare("/add", input) == 0 {
+			fmt.Println("Write the port:")
+			portInput, _ := reader.ReadString('\n')
+			// convert CRLF to LF
+			portInput = strings.Replace(portInput, "\n", "", -1)
+			portInput = strings.Replace(portInput, "\r", "", -1)
+
+			n.addPort(portInput)
+
+		} else if strings.Compare("/q", input) == 0 {
+			n.sendQueueUpRequest()
+		} else {
+			fmt.Println("Invalid message")
+		}
+	}
+
 }
-func writeStatus(nodes []Node) {
+
+func (n *Node) addPort(port string) {
+	n.ports = append(n.ports, port)
+}
+
+/*func (n *Node) fillPorts()  {
+	n.addPort("1111")
+	n.addPort("2222")
+	n.addPort("3333")
+	n.addPort("4444")
+}*/
+
+/*func writeStatus(nodes []*Node) {
 	for {
 		time.Sleep(3 * time.Second)
 		for _, n := range nodes {
-			fmt.Printf("%v is in critial section: %v\n", n.port, n.isInCriticalSection)
+			fmt.Printf("%v is in critial section: %v\n", n, n.isInCriticalSection)
 		}
 	}
-}
+}*/
 
-func (n *Node) checkCriticalSection() {
-	fmt.Printf("Checking crit: %v\n", n.nodeInCriticalSection)
-	for {
-		if strings.Compare(n.nodeInCriticalSection, "empty") == 0 {
-			n.sendGrantAccessRequest()
-		}
-	}
-}
+/*func setNodeValues(port string, listOfPorts []string) *Node {
 
-func (n *Node) sendQueueUpRequestAfter(milliseconds int) {
-	for {
-		time.Sleep(time.Duration(milliseconds) * time.Millisecond)
-		n.sendQueueUpRequest()
-	}
-}
-
-func (n *Node) createNode(port string, listOfPorts []string) {
-	//SERVER
-	n.ports = listOfPorts
+	var n Node
+	fmt.Printf("Set node values before: %v\n", n)
 	n.port = port
+	n.ports = listOfPorts
+	n.isInCriticalSection = false
+
+	fmt.Printf("Set node values after: %v\n", n)
+
+	fmt.Printf("start goroutine\n")
+	go n.startListen(port, listOfPorts)
+	fmt.Printf("goroutine started\n")
+	return &n
+}*/
+
+func (n *Node) startListen(port string, listOfPorts []string) {
+	//SERVER
 	portString := ":" + port
 	// Create listener tcp on portString
 	list, err := net.Listen("tcp", portString)
@@ -104,7 +163,9 @@ func (n *Node) createNode(port string, listOfPorts []string) {
 func (n *Node) startElection() {
 	sent := false
 	recievedResponse := false
+	fmt.Printf("election node: %v\n", n)
 	for _, port := range n.ports {
+		fmt.Println("Inside startElection loop")
 		if port > n.port {
 			sent = true
 			// Creat a virtual RPC Client Connection on port  9080 WithInsecure (because  of http)
@@ -128,7 +189,7 @@ func (n *Node) startElection() {
 		}
 	}
 	if !sent || !recievedResponse {
-		n.nodeInCriticalSection = "empty"
+		nodeInCriticalSection = "empty"
 		n.sendLeaderRequest()
 		fmt.Println("Leader Node chosen")
 	}
@@ -153,14 +214,16 @@ func sendElectionRequest(c DistributedMutualExclusion.CriticalSectionServiceClie
 }
 
 func (n *Node) Election(ctx context.Context, in *DistributedMutualExclusion.ElectionRequest) (*DistributedMutualExclusion.ElectionReply, error) {
-	go n.startElection()
+	n.startElection()
 	return &DistributedMutualExclusion.ElectionReply{
 		Reply: "OK",
 	}, nil
 }
 
 func (n *Node) sendLeaderRequest() {
+	fmt.Printf("SendLeaderRequest before loop, ports: %v, port: %v\n", n.ports, n.port)
 	for _, port := range n.ports {
+		fmt.Printf("SendLeaderRequest inside loop, port to: %v\n", port)
 
 		// Creat a virtual RPC Client Connection on port  9080 WithInsecure (because  of http)
 		var conn *grpc.ClientConn
@@ -188,14 +251,16 @@ func (n *Node) sendLeaderRequest() {
 
 		fmt.Printf("LeaderDeclaration response: %s\n", response.Reply)
 	}
-	fmt.Printf("checkCriticalSection go routine start")
+	fmt.Printf("checkCriticalSection go routine start\n")
 	go n.checkCriticalSection()
-	fmt.Printf("checkCriticalSection go routine started")
+	fmt.Printf("checkCriticalSection go routine started\n")
 
 }
 
 func (n *Node) LeaderDeclaration(ctx context.Context, in *DistributedMutualExclusion.LeaderRequest) (*DistributedMutualExclusion.LeaderReply, error) {
-	n.leaderPort = in.Port
+	fmt.Printf("before leader declaration, port: %v, leaderport: %v\n", n.port, leaderPort)
+	leaderPort = in.Port
+	fmt.Printf("after leader declaration, port: %v, leaderport: %v\n", n.port, leaderPort)
 
 	return &DistributedMutualExclusion.LeaderReply{
 		Reply: "OK",
@@ -203,10 +268,12 @@ func (n *Node) LeaderDeclaration(ctx context.Context, in *DistributedMutualExclu
 }
 
 func (n *Node) sendQueueUpRequest() {
-	if n.leaderPort != "" {
+	fmt.Printf("%v send queue up request start\n", n.port)
+	if leaderPort != "" {
+		fmt.Printf("send queue up request inside if\n")
 		// Creat a virtual RPC Client Connection on leaderPort
 		var conn *grpc.ClientConn
-		portString := ":" + n.leaderPort
+		portString := ":" + leaderPort
 		conn, err := grpc.Dial(portString, grpc.WithInsecure())
 		if err != nil {
 			log.Fatalf("Could not connect: %s", err)
@@ -223,6 +290,7 @@ func (n *Node) sendQueueUpRequest() {
 			Port: n.port,
 		}
 
+		fmt.Printf("sned queue: Leaderport: %v", leaderPort)
 		response, err := c.QueueUp(context.Background(), &message)
 		if err != nil {
 			log.Fatalf("Error when calling critical section request: %s", err)
@@ -234,22 +302,49 @@ func (n *Node) sendQueueUpRequest() {
 }
 
 func (n *Node) QueueUp(ctx context.Context, in *DistributedMutualExclusion.CriticalSectionRequest) (*DistributedMutualExclusion.CriticalSectionReply, error) {
-	n.queue = append(n.queue, in.Port)
-
+	queue = append(queue, in.Port)
+	fmt.Printf("n.queue: %v\n", queue)
 	return &DistributedMutualExclusion.CriticalSectionReply{
 		Reply: "OK",
 	}, nil
 
 }
 
+func (n *Node) checkCriticalSection() {
+	fmt.Printf("port: %v, queue: %v\n", n.port, queue)
+
+	//i := 0
+
+	for {
+		/*fmt.Printf("i: %v, node in CS: %v\n", i, n.nodeInCriticalSection)
+		i++*/
+
+		if strings.Compare(nodeInCriticalSection, "empty") == 0 {
+			fmt.Printf("send Grant access request: port: %v, queue: %v\n", n.port, queue)
+			n.sendGrantAccessRequest()
+			time.Sleep(200 * time.Millisecond)
+		}
+	}
+}
+
+func (n *Node) sendQueueUpRequestAfter(milliseconds int) {
+	for {
+		time.Sleep(10 * time.Second)
+		n.sendQueueUpRequest()
+		time.Sleep(10 * time.Second)
+		//time.Sleep(time.Duration(milliseconds) * time.Millisecond)
+	}
+}
+
 func (n *Node) sendGrantAccessRequest() {
-	if len(n.queue) != 0 {
+	if len(queue) != 0 {
 		// Creat a virtual RPC Client Connection on the node that can access
+		fmt.Println("sendGrantAccessRequest")
 		var conn *grpc.ClientConn
-		portString := ":" + n.queue[0] //next in queue
-		n.nodeInCriticalSection = n.queue[0]
-		fmt.Printf("queue: %v", n.queue)
-		n.queue = dequeue(n.queue)
+		portString := ":" + queue[0] //next in queue
+		nodeInCriticalSection = queue[0]
+		fmt.Printf("queue: %v\n", queue)
+		queue = dequeue(queue)
 
 		conn, err := grpc.Dial(portString, grpc.WithInsecure())
 		if err != nil {
@@ -272,7 +367,9 @@ func (n *Node) sendGrantAccessRequest() {
 			log.Fatalf("Error when calling grant access request: %s", err)
 		}
 
-		fmt.Printf("Grant Access response: %s\n", response.Reply)
+		nodeInCriticalSection = response.Reply
+
+		fmt.Printf("Grant Access response: %s\n", nodeInCriticalSection)
 	}
 }
 
@@ -290,21 +387,22 @@ func dequeue(queue []string) []string {
 
 func (n *Node) GrantAccess(ctx context.Context, in *DistributedMutualExclusion.GrantAccessRequest) (*DistributedMutualExclusion.GrantAccessReply, error) {
 	n.isInCriticalSection = true
+	fmt.Printf("We did it!")
 	go n.doingCriticalStuff()
 	return &DistributedMutualExclusion.GrantAccessReply{
-		Reply: "OK, access granted",
+		Reply: n.port,
 	}, nil
 }
 
 func (n *Node) doingCriticalStuff() {
-	time.Sleep(4000 * time.Millisecond)
-	n.sendLeaveRequest()
+	time.Sleep(10000 * time.Millisecond)
+	n.sendLeaveCriticalSectionRequest()
 }
 
-func (n *Node) sendLeaveRequest() {
+func (n *Node) sendLeaveCriticalSectionRequest() {
 	// Creat a virtual RPC Client Connection on leaderPort
 	var conn *grpc.ClientConn
-	portString := ":" + n.leaderPort
+	portString := ":" + leaderPort
 	conn, err := grpc.Dial(portString, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("Could not connect: %s", err)
@@ -317,7 +415,7 @@ func (n *Node) sendLeaveRequest() {
 	c := DistributedMutualExclusion.NewCriticalSectionServiceClient(conn)
 
 	// Send leave request
-	message := DistributedMutualExclusion.LeaveRequest{
+	message := DistributedMutualExclusion.LeaveCriticalSectionRequest{
 		Message: "I am leaving the critical section",
 	}
 
@@ -331,9 +429,96 @@ func (n *Node) sendLeaveRequest() {
 	fmt.Printf("Leave critical section response: %s\n", response.Reply)
 }
 
-func (n *Node) LeaveCriticalSection(ctx context.Context, in *DistributedMutualExclusion.LeaveRequest) (*DistributedMutualExclusion.LeaveReply, error) {
-	n.nodeInCriticalSection = "empty"
-	return &DistributedMutualExclusion.LeaveReply{
+func (n *Node) LeaveCriticalSection(ctx context.Context, in *DistributedMutualExclusion.LeaveCriticalSectionRequest) (*DistributedMutualExclusion.LeaveCriticalSectionReply, error) {
+	nodeInCriticalSection = "empty"
+	return &DistributedMutualExclusion.LeaveCriticalSectionReply{
+		Reply: "OK",
+	}, nil
+}
+
+func (n *Node) sendJoinRequest() {
+	// Creat a virtual RPC Client Connection on leaderPort
+	var conn *grpc.ClientConn
+	portString := ":" + leaderPort
+	conn, err := grpc.Dial(portString, grpc.WithInsecure())
+	if err != nil {
+		log.Fatalf("Could not connect: %s", err)
+	}
+
+	// Defer means: When this function returns, call this method (meaing, one main is done, close connection)
+	defer conn.Close()
+
+	//  Create new Client from generated gRPC code from proto
+	c := DistributedMutualExclusion.NewCriticalSectionServiceClient(conn)
+
+	// Send leave request
+	message := DistributedMutualExclusion.JoinRequest{
+		Port: n.port,
+	}
+
+	response, err := c.Join(context.Background(), &message)
+	if err != nil {
+		log.Fatalf("Error when calling join: %s", err)
+	}
+
+	n.ports = strings.Split(response.Ports, " ")
+
+	fmt.Printf("Join response: %s\n", response.Ports)
+}
+
+func (n *Node) Join(ctx context.Context, in *DistributedMutualExclusion.JoinRequest) (*DistributedMutualExclusion.JoinReply, error) {
+	var portsstring string
+
+	for _, p := range n.ports {
+		portsstring = portsstring + p + " "
+	}
+
+	portsstring = portsstring + in.Port
+
+	n.ports = append(n.ports, in.Port)
+
+	n.sendUpdatePortsRequest(portsstring)
+
+	return &DistributedMutualExclusion.JoinReply{
+		Ports: portsstring,
+	}, nil
+}
+
+func (n *Node) sendUpdatePortsRequest(ports string) { //called on leader
+	for _, port := range n.ports {
+
+		// Creat a virtual RPC Client Connection on port  9080 WithInsecure (because  of http)
+		var conn *grpc.ClientConn
+		portString := ":" + port
+		conn, err := grpc.Dial(portString, grpc.WithInsecure())
+		if err != nil {
+			log.Fatalf("Could not connect: %s", err)
+		}
+
+		// Defer means: When this function returns, call this method (meaing, one main is done, close connection)
+		defer conn.Close()
+
+		//  Create new Client from generated gRPC code from proto
+		c := DistributedMutualExclusion.NewCriticalSectionServiceClient(conn)
+
+		// Send leader request
+		message := DistributedMutualExclusion.UpdatePortsRequest{
+			Ports: ports,
+		}
+
+		response, err := c.UpdatePorts(context.Background(), &message)
+		if err != nil {
+			log.Fatalf("Error when calling send update ports request: %s", err)
+		}
+
+		fmt.Printf("update ports request response: %s\n", response.Reply)
+	}
+}
+
+func (n *Node) UpdatePorts(ctx context.Context, in *DistributedMutualExclusion.UpdatePortsRequest) (*DistributedMutualExclusion.UpdatePortsReply, error) {
+	n.ports = strings.Split(in.Ports, " ")
+
+	return &DistributedMutualExclusion.UpdatePortsReply{
 		Reply: "OK",
 	}, nil
 }
