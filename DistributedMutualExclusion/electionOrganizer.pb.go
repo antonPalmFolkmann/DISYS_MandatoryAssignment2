@@ -20,6 +20,288 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type UpdatePortsRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Ports string `protobuf:"bytes,1,opt,name=ports,proto3" json:"ports,omitempty"`
+}
+
+func (x *UpdatePortsRequest) Reset() {
+	*x = UpdatePortsRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[0]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdatePortsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdatePortsRequest) ProtoMessage() {}
+
+func (x *UpdatePortsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[0]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdatePortsRequest.ProtoReflect.Descriptor instead.
+func (*UpdatePortsRequest) Descriptor() ([]byte, []int) {
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{0}
+}
+
+func (x *UpdatePortsRequest) GetPorts() string {
+	if x != nil {
+		return x.Ports
+	}
+	return ""
+}
+
+type UpdatePortsReply struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Reply string `protobuf:"bytes,1,opt,name=reply,proto3" json:"reply,omitempty"`
+}
+
+func (x *UpdatePortsReply) Reset() {
+	*x = UpdatePortsReply{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[1]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *UpdatePortsReply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdatePortsReply) ProtoMessage() {}
+
+func (x *UpdatePortsReply) ProtoReflect() protoreflect.Message {
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[1]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdatePortsReply.ProtoReflect.Descriptor instead.
+func (*UpdatePortsReply) Descriptor() ([]byte, []int) {
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *UpdatePortsReply) GetReply() string {
+	if x != nil {
+		return x.Reply
+	}
+	return ""
+}
+
+type JoinRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Port string `protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
+}
+
+func (x *JoinRequest) Reset() {
+	*x = JoinRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *JoinRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*JoinRequest) ProtoMessage() {}
+
+func (x *JoinRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use JoinRequest.ProtoReflect.Descriptor instead.
+func (*JoinRequest) Descriptor() ([]byte, []int) {
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *JoinRequest) GetPort() string {
+	if x != nil {
+		return x.Port
+	}
+	return ""
+}
+
+type JoinReply struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Ports string `protobuf:"bytes,1,opt,name=ports,proto3" json:"ports,omitempty"`
+}
+
+func (x *JoinReply) Reset() {
+	*x = JoinReply{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *JoinReply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*JoinReply) ProtoMessage() {}
+
+func (x *JoinReply) ProtoReflect() protoreflect.Message {
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use JoinReply.ProtoReflect.Descriptor instead.
+func (*JoinReply) Descriptor() ([]byte, []int) {
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *JoinReply) GetPorts() string {
+	if x != nil {
+		return x.Ports
+	}
+	return ""
+}
+
+type LeaveRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Port string `protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
+}
+
+func (x *LeaveRequest) Reset() {
+	*x = LeaveRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LeaveRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LeaveRequest) ProtoMessage() {}
+
+func (x *LeaveRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LeaveRequest.ProtoReflect.Descriptor instead.
+func (*LeaveRequest) Descriptor() ([]byte, []int) {
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *LeaveRequest) GetPort() string {
+	if x != nil {
+		return x.Port
+	}
+	return ""
+}
+
+type LeaveReply struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Reply string `protobuf:"bytes,1,opt,name=reply,proto3" json:"reply,omitempty"`
+}
+
+func (x *LeaveReply) Reset() {
+	*x = LeaveReply{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *LeaveReply) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LeaveReply) ProtoMessage() {}
+
+func (x *LeaveReply) ProtoReflect() protoreflect.Message {
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LeaveReply.ProtoReflect.Descriptor instead.
+func (*LeaveReply) Descriptor() ([]byte, []int) {
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *LeaveReply) GetReply() string {
+	if x != nil {
+		return x.Reply
+	}
+	return ""
+}
+
 type ElectionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -31,7 +313,7 @@ type ElectionRequest struct {
 func (x *ElectionRequest) Reset() {
 	*x = ElectionRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[0]
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -44,7 +326,7 @@ func (x *ElectionRequest) String() string {
 func (*ElectionRequest) ProtoMessage() {}
 
 func (x *ElectionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[0]
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -57,7 +339,7 @@ func (x *ElectionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ElectionRequest.ProtoReflect.Descriptor instead.
 func (*ElectionRequest) Descriptor() ([]byte, []int) {
-	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{0}
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *ElectionRequest) GetMessage() string {
@@ -78,7 +360,7 @@ type ElectionReply struct {
 func (x *ElectionReply) Reset() {
 	*x = ElectionReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[1]
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -91,7 +373,7 @@ func (x *ElectionReply) String() string {
 func (*ElectionReply) ProtoMessage() {}
 
 func (x *ElectionReply) ProtoReflect() protoreflect.Message {
-	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[1]
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -104,7 +386,7 @@ func (x *ElectionReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ElectionReply.ProtoReflect.Descriptor instead.
 func (*ElectionReply) Descriptor() ([]byte, []int) {
-	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{1}
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *ElectionReply) GetReply() string {
@@ -125,7 +407,7 @@ type LeaderRequest struct {
 func (x *LeaderRequest) Reset() {
 	*x = LeaderRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[2]
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -138,7 +420,7 @@ func (x *LeaderRequest) String() string {
 func (*LeaderRequest) ProtoMessage() {}
 
 func (x *LeaderRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[2]
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -151,7 +433,7 @@ func (x *LeaderRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LeaderRequest.ProtoReflect.Descriptor instead.
 func (*LeaderRequest) Descriptor() ([]byte, []int) {
-	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{2}
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *LeaderRequest) GetPort() string {
@@ -172,7 +454,7 @@ type LeaderReply struct {
 func (x *LeaderReply) Reset() {
 	*x = LeaderReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[3]
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -185,7 +467,7 @@ func (x *LeaderReply) String() string {
 func (*LeaderReply) ProtoMessage() {}
 
 func (x *LeaderReply) ProtoReflect() protoreflect.Message {
-	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[3]
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -198,7 +480,7 @@ func (x *LeaderReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use LeaderReply.ProtoReflect.Descriptor instead.
 func (*LeaderReply) Descriptor() ([]byte, []int) {
-	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{3}
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *LeaderReply) GetReply() string {
@@ -213,13 +495,13 @@ type CriticalSectionRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Port string `protobuf:"bytes,1,opt,name=port,proto3" json:"port,omitempty"`
 }
 
 func (x *CriticalSectionRequest) Reset() {
 	*x = CriticalSectionRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[4]
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -232,7 +514,7 @@ func (x *CriticalSectionRequest) String() string {
 func (*CriticalSectionRequest) ProtoMessage() {}
 
 func (x *CriticalSectionRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[4]
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -245,12 +527,12 @@ func (x *CriticalSectionRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CriticalSectionRequest.ProtoReflect.Descriptor instead.
 func (*CriticalSectionRequest) Descriptor() ([]byte, []int) {
-	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{4}
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{10}
 }
 
-func (x *CriticalSectionRequest) GetMessage() string {
+func (x *CriticalSectionRequest) GetPort() string {
 	if x != nil {
-		return x.Message
+		return x.Port
 	}
 	return ""
 }
@@ -266,7 +548,7 @@ type CriticalSectionReply struct {
 func (x *CriticalSectionReply) Reset() {
 	*x = CriticalSectionReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[5]
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -279,7 +561,7 @@ func (x *CriticalSectionReply) String() string {
 func (*CriticalSectionReply) ProtoMessage() {}
 
 func (x *CriticalSectionReply) ProtoReflect() protoreflect.Message {
-	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[5]
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -292,7 +574,7 @@ func (x *CriticalSectionReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use CriticalSectionReply.ProtoReflect.Descriptor instead.
 func (*CriticalSectionReply) Descriptor() ([]byte, []int) {
-	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{5}
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *CriticalSectionReply) GetReply() string {
@@ -308,12 +590,13 @@ type GrantAccessRequest struct {
 	unknownFields protoimpl.UnknownFields
 
 	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Port    string `protobuf:"bytes,2,opt,name=port,proto3" json:"port,omitempty"`
 }
 
 func (x *GrantAccessRequest) Reset() {
 	*x = GrantAccessRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[6]
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -326,7 +609,7 @@ func (x *GrantAccessRequest) String() string {
 func (*GrantAccessRequest) ProtoMessage() {}
 
 func (x *GrantAccessRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[6]
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -339,12 +622,19 @@ func (x *GrantAccessRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantAccessRequest.ProtoReflect.Descriptor instead.
 func (*GrantAccessRequest) Descriptor() ([]byte, []int) {
-	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{6}
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *GrantAccessRequest) GetMessage() string {
 	if x != nil {
 		return x.Message
+	}
+	return ""
+}
+
+func (x *GrantAccessRequest) GetPort() string {
+	if x != nil {
+		return x.Port
 	}
 	return ""
 }
@@ -360,7 +650,7 @@ type GrantAccessReply struct {
 func (x *GrantAccessReply) Reset() {
 	*x = GrantAccessReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[7]
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -373,7 +663,7 @@ func (x *GrantAccessReply) String() string {
 func (*GrantAccessReply) ProtoMessage() {}
 
 func (x *GrantAccessReply) ProtoReflect() protoreflect.Message {
-	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[7]
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -386,7 +676,7 @@ func (x *GrantAccessReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GrantAccessReply.ProtoReflect.Descriptor instead.
 func (*GrantAccessReply) Descriptor() ([]byte, []int) {
-	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{7}
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *GrantAccessReply) GetReply() string {
@@ -396,31 +686,32 @@ func (x *GrantAccessReply) GetReply() string {
 	return ""
 }
 
-type LeaveRequest struct {
+type LeaveCriticalSectionRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
 	Message string `protobuf:"bytes,1,opt,name=message,proto3" json:"message,omitempty"`
+	Port    string `protobuf:"bytes,2,opt,name=port,proto3" json:"port,omitempty"`
 }
 
-func (x *LeaveRequest) Reset() {
-	*x = LeaveRequest{}
+func (x *LeaveCriticalSectionRequest) Reset() {
+	*x = LeaveCriticalSectionRequest{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[8]
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *LeaveRequest) String() string {
+func (x *LeaveCriticalSectionRequest) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*LeaveRequest) ProtoMessage() {}
+func (*LeaveCriticalSectionRequest) ProtoMessage() {}
 
-func (x *LeaveRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[8]
+func (x *LeaveCriticalSectionRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -431,19 +722,26 @@ func (x *LeaveRequest) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use LeaveRequest.ProtoReflect.Descriptor instead.
-func (*LeaveRequest) Descriptor() ([]byte, []int) {
-	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{8}
+// Deprecated: Use LeaveCriticalSectionRequest.ProtoReflect.Descriptor instead.
+func (*LeaveCriticalSectionRequest) Descriptor() ([]byte, []int) {
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{14}
 }
 
-func (x *LeaveRequest) GetMessage() string {
+func (x *LeaveCriticalSectionRequest) GetMessage() string {
 	if x != nil {
 		return x.Message
 	}
 	return ""
 }
 
-type LeaveReply struct {
+func (x *LeaveCriticalSectionRequest) GetPort() string {
+	if x != nil {
+		return x.Port
+	}
+	return ""
+}
+
+type LeaveCriticalSectionReply struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
@@ -451,23 +749,23 @@ type LeaveReply struct {
 	Reply string `protobuf:"bytes,1,opt,name=reply,proto3" json:"reply,omitempty"`
 }
 
-func (x *LeaveReply) Reset() {
-	*x = LeaveReply{}
+func (x *LeaveCriticalSectionReply) Reset() {
+	*x = LeaveCriticalSectionReply{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[9]
+		mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
 }
 
-func (x *LeaveReply) String() string {
+func (x *LeaveCriticalSectionReply) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
-func (*LeaveReply) ProtoMessage() {}
+func (*LeaveCriticalSectionReply) ProtoMessage() {}
 
-func (x *LeaveReply) ProtoReflect() protoreflect.Message {
-	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[9]
+func (x *LeaveCriticalSectionReply) ProtoReflect() protoreflect.Message {
+	mi := &file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -478,12 +776,12 @@ func (x *LeaveReply) ProtoReflect() protoreflect.Message {
 	return mi.MessageOf(x)
 }
 
-// Deprecated: Use LeaveReply.ProtoReflect.Descriptor instead.
-func (*LeaveReply) Descriptor() ([]byte, []int) {
-	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{9}
+// Deprecated: Use LeaveCriticalSectionReply.ProtoReflect.Descriptor instead.
+func (*LeaveCriticalSectionReply) Descriptor() ([]byte, []int) {
+	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP(), []int{15}
 }
 
-func (x *LeaveReply) GetReply() string {
+func (x *LeaveCriticalSectionReply) GetReply() string {
 	if x != nil {
 		return x.Reply
 	}
@@ -497,70 +795,105 @@ var file_DistributedMutualExclusion_electionOrganizer_proto_rawDesc = []byte{
 	0x75, 0x61, 0x6c, 0x45, 0x78, 0x63, 0x6c, 0x75, 0x73, 0x69, 0x6f, 0x6e, 0x2f, 0x65, 0x6c, 0x65,
 	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x12, 0x11, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72,
-	0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x22, 0x2b, 0x0a, 0x0f, 0x45, 0x6c, 0x65, 0x63, 0x74,
-	0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65,
-	0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73,
-	0x73, 0x61, 0x67, 0x65, 0x22, 0x25, 0x0a, 0x0d, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e,
-	0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x23, 0x0a, 0x0d, 0x4c,
-	0x65, 0x61, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04,
+	0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x22, 0x2a, 0x0a, 0x12, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x50, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x14, 0x0a,
+	0x05, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x70, 0x6f,
+	0x72, 0x74, 0x73, 0x22, 0x28, 0x0a, 0x10, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x6f, 0x72,
+	0x74, 0x73, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79,
+	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x21, 0x0a,
+	0x0b, 0x4a, 0x6f, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04,
 	0x70, 0x6f, 0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x6f, 0x72, 0x74,
-	0x22, 0x23, 0x0a, 0x0b, 0x4c, 0x65, 0x61, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12,
+	0x22, 0x21, 0x0a, 0x09, 0x4a, 0x6f, 0x69, 0x6e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x14, 0x0a,
+	0x05, 0x70, 0x6f, 0x72, 0x74, 0x73, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x70, 0x6f,
+	0x72, 0x74, 0x73, 0x22, 0x22, 0x0a, 0x0c, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x6f, 0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x70, 0x6f, 0x72, 0x74, 0x22, 0x22, 0x0a, 0x0a, 0x4c, 0x65, 0x61, 0x76, 0x65,
+	0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2b, 0x0a, 0x0f, 0x45,
+	0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x18,
+	0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x25, 0x0a, 0x0d, 0x45, 0x6c, 0x65, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x72, 0x65, 0x70,
+	0x6c, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x22,
+	0x23, 0x0a, 0x0d, 0x4c, 0x65, 0x61, 0x64, 0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74,
+	0x12, 0x12, 0x0a, 0x04, 0x70, 0x6f, 0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
+	0x70, 0x6f, 0x72, 0x74, 0x22, 0x23, 0x0a, 0x0b, 0x4c, 0x65, 0x61, 0x64, 0x65, 0x72, 0x52, 0x65,
+	0x70, 0x6c, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x18, 0x01, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2c, 0x0a, 0x16, 0x43, 0x72, 0x69,
+	0x74, 0x69, 0x63, 0x61, 0x6c, 0x53, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x6f, 0x72, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x04, 0x70, 0x6f, 0x72, 0x74, 0x22, 0x2c, 0x0a, 0x14, 0x43, 0x72, 0x69, 0x74, 0x69,
+	0x63, 0x61, 0x6c, 0x53, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12,
 	0x14, 0x0a, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05,
-	0x72, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x32, 0x0a, 0x16, 0x43, 0x72, 0x69, 0x74, 0x69, 0x63, 0x61,
-	0x6c, 0x53, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12,
-	0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x2c, 0x0a, 0x14, 0x43, 0x72, 0x69,
-	0x74, 0x69, 0x63, 0x61, 0x6c, 0x53, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x70, 0x6c,
-	0x79, 0x12, 0x14, 0x0a, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x2e, 0x0a, 0x12, 0x47, 0x72, 0x61, 0x6e, 0x74,
-	0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x18, 0x0a,
-	0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
-	0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x28, 0x0a, 0x10, 0x47, 0x72, 0x61, 0x6e, 0x74,
-	0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x72,
-	0x65, 0x70, 0x6c, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x72, 0x65, 0x70, 0x6c,
-	0x79, 0x22, 0x28, 0x0a, 0x0c, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
-	0x74, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0x22, 0x0a, 0x0a, 0x4c,
-	0x65, 0x61, 0x76, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x14, 0x0a, 0x05, 0x72, 0x65, 0x70,
-	0x6c, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x32,
-	0xdd, 0x03, 0x0a, 0x16, 0x43, 0x72, 0x69, 0x74, 0x69, 0x63, 0x61, 0x6c, 0x53, 0x65, 0x63, 0x74,
-	0x69, 0x6f, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x52, 0x0a, 0x08, 0x45, 0x6c,
-	0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x22, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f,
-	0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74,
-	0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20, 0x2e, 0x45, 0x6c, 0x65,
+	0x72, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x42, 0x0a, 0x12, 0x47, 0x72, 0x61, 0x6e, 0x74, 0x41, 0x63,
+	0x63, 0x65, 0x73, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x6d,
+	0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65,
+	0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x6f, 0x72, 0x74, 0x18, 0x02, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x6f, 0x72, 0x74, 0x22, 0x28, 0x0a, 0x10, 0x47, 0x72, 0x61,
+	0x6e, 0x74, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x14, 0x0a,
+	0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x72, 0x65,
+	0x70, 0x6c, 0x79, 0x22, 0x4b, 0x0a, 0x1b, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x43, 0x72, 0x69, 0x74,
+	0x69, 0x63, 0x61, 0x6c, 0x53, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x12, 0x0a, 0x04,
+	0x70, 0x6f, 0x72, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x6f, 0x72, 0x74,
+	0x22, 0x31, 0x0a, 0x19, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x43, 0x72, 0x69, 0x74, 0x69, 0x63, 0x61,
+	0x6c, 0x53, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x12, 0x14, 0x0a,
+	0x05, 0x72, 0x65, 0x70, 0x6c, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x72, 0x65,
+	0x70, 0x6c, 0x79, 0x32, 0xeb, 0x05, 0x0a, 0x16, 0x43, 0x72, 0x69, 0x74, 0x69, 0x63, 0x61, 0x6c,
+	0x53, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x53, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12, 0x52,
+	0x0a, 0x08, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x22, 0x2e, 0x45, 0x6c, 0x65,
 	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x45,
-	0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x57,
-	0x0a, 0x11, 0x4c, 0x65, 0x61, 0x64, 0x65, 0x72, 0x44, 0x65, 0x63, 0x6c, 0x61, 0x72, 0x61, 0x74,
-	0x69, 0x6f, 0x6e, 0x12, 0x20, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72,
-	0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x4c, 0x65, 0x61, 0x64, 0x65, 0x72, 0x52, 0x65,
-	0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e,
-	0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x4c, 0x65, 0x61, 0x64, 0x65, 0x72,
-	0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x5f, 0x0a, 0x07, 0x51, 0x75, 0x65, 0x75, 0x65,
-	0x55, 0x70, 0x12, 0x29, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67,
-	0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x43, 0x72, 0x69, 0x74, 0x69, 0x63, 0x61, 0x6c, 0x53,
-	0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x27, 0x2e,
-	0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65,
-	0x72, 0x2e, 0x43, 0x72, 0x69, 0x74, 0x69, 0x63, 0x61, 0x6c, 0x53, 0x65, 0x63, 0x74, 0x69, 0x6f,
-	0x6e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x5b, 0x0a, 0x0b, 0x47, 0x72, 0x61, 0x6e,
-	0x74, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x12, 0x25, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69,
-	0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x47, 0x72, 0x61, 0x6e,
-	0x74, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23,
+	0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x20,
 	0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a,
-	0x65, 0x72, 0x2e, 0x47, 0x72, 0x61, 0x6e, 0x74, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x52, 0x65,
-	0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x58, 0x0a, 0x14, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x43, 0x72,
-	0x69, 0x74, 0x69, 0x63, 0x61, 0x6c, 0x53, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x1f, 0x2e,
-	0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65,
-	0x72, 0x2e, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1d,
-	0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a,
-	0x65, 0x72, 0x2e, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x42,
-	0x5c, 0x5a, 0x5a, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x67, 0x69, 0x74, 0x68, 0x75,
-	0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x6e, 0x74, 0x6f, 0x6e, 0x50, 0x61, 0x6c, 0x6d, 0x46,
-	0x6f, 0x6c, 0x6b, 0x6d, 0x61, 0x6e, 0x6e, 0x2f, 0x44, 0x49, 0x53, 0x59, 0x53, 0x5f, 0x4d, 0x61,
-	0x6e, 0x64, 0x61, 0x74, 0x6f, 0x72, 0x79, 0x41, 0x73, 0x73, 0x69, 0x67, 0x6e, 0x6d, 0x65, 0x6e,
-	0x74, 0x32, 0x3b, 0x44, 0x69, 0x73, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x64, 0x4d, 0x75,
-	0x74, 0x75, 0x61, 0x6c, 0x45, 0x78, 0x63, 0x6c, 0x75, 0x73, 0x69, 0x6f, 0x6e, 0x62, 0x06, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x65, 0x72, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x70, 0x6c, 0x79,
+	0x22, 0x00, 0x12, 0x57, 0x0a, 0x11, 0x4c, 0x65, 0x61, 0x64, 0x65, 0x72, 0x44, 0x65, 0x63, 0x6c,
+	0x61, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x20, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69,
+	0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x4c, 0x65, 0x61, 0x64,
+	0x65, 0x72, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1e, 0x2e, 0x45, 0x6c, 0x65, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x4c, 0x65,
+	0x61, 0x64, 0x65, 0x72, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x5f, 0x0a, 0x07, 0x51,
+	0x75, 0x65, 0x75, 0x65, 0x55, 0x70, 0x12, 0x29, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f,
+	0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x43, 0x72, 0x69, 0x74, 0x69,
+	0x63, 0x61, 0x6c, 0x53, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x27, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61,
+	0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x43, 0x72, 0x69, 0x74, 0x69, 0x63, 0x61, 0x6c, 0x53, 0x65,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x5b, 0x0a, 0x0b,
+	0x47, 0x72, 0x61, 0x6e, 0x74, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x12, 0x25, 0x2e, 0x45, 0x6c,
+	0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e,
+	0x47, 0x72, 0x61, 0x6e, 0x74, 0x41, 0x63, 0x63, 0x65, 0x73, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65,
+	0x73, 0x74, 0x1a, 0x23, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67,
+	0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x47, 0x72, 0x61, 0x6e, 0x74, 0x41, 0x63, 0x63, 0x65,
+	0x73, 0x73, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x76, 0x0a, 0x14, 0x4c, 0x65, 0x61,
+	0x76, 0x65, 0x43, 0x72, 0x69, 0x74, 0x69, 0x63, 0x61, 0x6c, 0x53, 0x65, 0x63, 0x74, 0x69, 0x6f,
+	0x6e, 0x12, 0x2e, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61,
+	0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x43, 0x72, 0x69, 0x74, 0x69,
+	0x63, 0x61, 0x6c, 0x53, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x1a, 0x2c, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61,
+	0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x43, 0x72, 0x69, 0x74, 0x69,
+	0x63, 0x61, 0x6c, 0x53, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22,
+	0x00, 0x12, 0x46, 0x0a, 0x04, 0x4a, 0x6f, 0x69, 0x6e, 0x12, 0x1e, 0x2e, 0x45, 0x6c, 0x65, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x4a, 0x6f,
+	0x69, 0x6e, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x1c, 0x2e, 0x45, 0x6c, 0x65, 0x63,
+	0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x4a, 0x6f,
+	0x69, 0x6e, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22, 0x00, 0x12, 0x49, 0x0a, 0x05, 0x4c, 0x65, 0x61,
+	0x76, 0x65, 0x12, 0x1f, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67,
+	0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x52, 0x65, 0x71, 0x75,
+	0x65, 0x73, 0x74, 0x1a, 0x1d, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72,
+	0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x4c, 0x65, 0x61, 0x76, 0x65, 0x52, 0x65, 0x70,
+	0x6c, 0x79, 0x22, 0x00, 0x12, 0x5b, 0x0a, 0x0b, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x6f,
+	0x72, 0x74, 0x73, 0x12, 0x25, 0x2e, 0x45, 0x6c, 0x65, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72,
+	0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x6f,
+	0x72, 0x74, 0x73, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x23, 0x2e, 0x45, 0x6c, 0x65,
+	0x63, 0x74, 0x69, 0x6f, 0x6e, 0x4f, 0x72, 0x67, 0x61, 0x6e, 0x69, 0x7a, 0x65, 0x72, 0x2e, 0x55,
+	0x70, 0x64, 0x61, 0x74, 0x65, 0x50, 0x6f, 0x72, 0x74, 0x73, 0x52, 0x65, 0x70, 0x6c, 0x79, 0x22,
+	0x00, 0x42, 0x5c, 0x5a, 0x5a, 0x68, 0x74, 0x74, 0x70, 0x73, 0x3a, 0x2f, 0x2f, 0x67, 0x69, 0x74,
+	0x68, 0x75, 0x62, 0x2e, 0x63, 0x6f, 0x6d, 0x2f, 0x61, 0x6e, 0x74, 0x6f, 0x6e, 0x50, 0x61, 0x6c,
+	0x6d, 0x46, 0x6f, 0x6c, 0x6b, 0x6d, 0x61, 0x6e, 0x6e, 0x2f, 0x44, 0x49, 0x53, 0x59, 0x53, 0x5f,
+	0x4d, 0x61, 0x6e, 0x64, 0x61, 0x74, 0x6f, 0x72, 0x79, 0x41, 0x73, 0x73, 0x69, 0x67, 0x6e, 0x6d,
+	0x65, 0x6e, 0x74, 0x32, 0x3b, 0x44, 0x69, 0x73, 0x74, 0x72, 0x69, 0x62, 0x75, 0x74, 0x65, 0x64,
+	0x4d, 0x75, 0x74, 0x75, 0x61, 0x6c, 0x45, 0x78, 0x63, 0x6c, 0x75, 0x73, 0x69, 0x6f, 0x6e, 0x62,
+	0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -575,35 +908,47 @@ func file_DistributedMutualExclusion_electionOrganizer_proto_rawDescGZIP() []byt
 	return file_DistributedMutualExclusion_electionOrganizer_proto_rawDescData
 }
 
-var file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes = make([]protoimpl.MessageInfo, 16)
 var file_DistributedMutualExclusion_electionOrganizer_proto_goTypes = []interface{}{
-	(*ElectionRequest)(nil),        // 0: ElectionOrganizer.ElectionRequest
-	(*ElectionReply)(nil),          // 1: ElectionOrganizer.ElectionReply
-	(*LeaderRequest)(nil),          // 2: ElectionOrganizer.LeaderRequest
-	(*LeaderReply)(nil),            // 3: ElectionOrganizer.LeaderReply
-	(*CriticalSectionRequest)(nil), // 4: ElectionOrganizer.CriticalSectionRequest
-	(*CriticalSectionReply)(nil),   // 5: ElectionOrganizer.CriticalSectionReply
-	(*GrantAccessRequest)(nil),     // 6: ElectionOrganizer.GrantAccessRequest
-	(*GrantAccessReply)(nil),       // 7: ElectionOrganizer.GrantAccessReply
-	(*LeaveRequest)(nil),           // 8: ElectionOrganizer.LeaveRequest
-	(*LeaveReply)(nil),             // 9: ElectionOrganizer.LeaveReply
+	(*UpdatePortsRequest)(nil),          // 0: ElectionOrganizer.UpdatePortsRequest
+	(*UpdatePortsReply)(nil),            // 1: ElectionOrganizer.UpdatePortsReply
+	(*JoinRequest)(nil),                 // 2: ElectionOrganizer.JoinRequest
+	(*JoinReply)(nil),                   // 3: ElectionOrganizer.JoinReply
+	(*LeaveRequest)(nil),                // 4: ElectionOrganizer.LeaveRequest
+	(*LeaveReply)(nil),                  // 5: ElectionOrganizer.LeaveReply
+	(*ElectionRequest)(nil),             // 6: ElectionOrganizer.ElectionRequest
+	(*ElectionReply)(nil),               // 7: ElectionOrganizer.ElectionReply
+	(*LeaderRequest)(nil),               // 8: ElectionOrganizer.LeaderRequest
+	(*LeaderReply)(nil),                 // 9: ElectionOrganizer.LeaderReply
+	(*CriticalSectionRequest)(nil),      // 10: ElectionOrganizer.CriticalSectionRequest
+	(*CriticalSectionReply)(nil),        // 11: ElectionOrganizer.CriticalSectionReply
+	(*GrantAccessRequest)(nil),          // 12: ElectionOrganizer.GrantAccessRequest
+	(*GrantAccessReply)(nil),            // 13: ElectionOrganizer.GrantAccessReply
+	(*LeaveCriticalSectionRequest)(nil), // 14: ElectionOrganizer.LeaveCriticalSectionRequest
+	(*LeaveCriticalSectionReply)(nil),   // 15: ElectionOrganizer.LeaveCriticalSectionReply
 }
 var file_DistributedMutualExclusion_electionOrganizer_proto_depIdxs = []int32{
-	0, // 0: ElectionOrganizer.CriticalSectionService.Election:input_type -> ElectionOrganizer.ElectionRequest
-	2, // 1: ElectionOrganizer.CriticalSectionService.LeaderDeclaration:input_type -> ElectionOrganizer.LeaderRequest
-	4, // 2: ElectionOrganizer.CriticalSectionService.QueueUp:input_type -> ElectionOrganizer.CriticalSectionRequest
-	6, // 3: ElectionOrganizer.CriticalSectionService.GrantAccess:input_type -> ElectionOrganizer.GrantAccessRequest
-	8, // 4: ElectionOrganizer.CriticalSectionService.LeaveCriticalSection:input_type -> ElectionOrganizer.LeaveRequest
-	1, // 5: ElectionOrganizer.CriticalSectionService.Election:output_type -> ElectionOrganizer.ElectionReply
-	3, // 6: ElectionOrganizer.CriticalSectionService.LeaderDeclaration:output_type -> ElectionOrganizer.LeaderReply
-	5, // 7: ElectionOrganizer.CriticalSectionService.QueueUp:output_type -> ElectionOrganizer.CriticalSectionReply
-	7, // 8: ElectionOrganizer.CriticalSectionService.GrantAccess:output_type -> ElectionOrganizer.GrantAccessReply
-	9, // 9: ElectionOrganizer.CriticalSectionService.LeaveCriticalSection:output_type -> ElectionOrganizer.LeaveReply
-	5, // [5:10] is the sub-list for method output_type
-	0, // [0:5] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	6,  // 0: ElectionOrganizer.CriticalSectionService.Election:input_type -> ElectionOrganizer.ElectionRequest
+	8,  // 1: ElectionOrganizer.CriticalSectionService.LeaderDeclaration:input_type -> ElectionOrganizer.LeaderRequest
+	10, // 2: ElectionOrganizer.CriticalSectionService.QueueUp:input_type -> ElectionOrganizer.CriticalSectionRequest
+	12, // 3: ElectionOrganizer.CriticalSectionService.GrantAccess:input_type -> ElectionOrganizer.GrantAccessRequest
+	14, // 4: ElectionOrganizer.CriticalSectionService.LeaveCriticalSection:input_type -> ElectionOrganizer.LeaveCriticalSectionRequest
+	2,  // 5: ElectionOrganizer.CriticalSectionService.Join:input_type -> ElectionOrganizer.JoinRequest
+	4,  // 6: ElectionOrganizer.CriticalSectionService.Leave:input_type -> ElectionOrganizer.LeaveRequest
+	0,  // 7: ElectionOrganizer.CriticalSectionService.UpdatePorts:input_type -> ElectionOrganizer.UpdatePortsRequest
+	7,  // 8: ElectionOrganizer.CriticalSectionService.Election:output_type -> ElectionOrganizer.ElectionReply
+	9,  // 9: ElectionOrganizer.CriticalSectionService.LeaderDeclaration:output_type -> ElectionOrganizer.LeaderReply
+	11, // 10: ElectionOrganizer.CriticalSectionService.QueueUp:output_type -> ElectionOrganizer.CriticalSectionReply
+	13, // 11: ElectionOrganizer.CriticalSectionService.GrantAccess:output_type -> ElectionOrganizer.GrantAccessReply
+	15, // 12: ElectionOrganizer.CriticalSectionService.LeaveCriticalSection:output_type -> ElectionOrganizer.LeaveCriticalSectionReply
+	3,  // 13: ElectionOrganizer.CriticalSectionService.Join:output_type -> ElectionOrganizer.JoinReply
+	5,  // 14: ElectionOrganizer.CriticalSectionService.Leave:output_type -> ElectionOrganizer.LeaveReply
+	1,  // 15: ElectionOrganizer.CriticalSectionService.UpdatePorts:output_type -> ElectionOrganizer.UpdatePortsReply
+	8,  // [8:16] is the sub-list for method output_type
+	0,  // [0:8] is the sub-list for method input_type
+	0,  // [0:0] is the sub-list for extension type_name
+	0,  // [0:0] is the sub-list for extension extendee
+	0,  // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_DistributedMutualExclusion_electionOrganizer_proto_init() }
@@ -613,7 +958,7 @@ func file_DistributedMutualExclusion_electionOrganizer_proto_init() {
 	}
 	if !protoimpl.UnsafeEnabled {
 		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ElectionRequest); i {
+			switch v := v.(*UpdatePortsRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -625,7 +970,7 @@ func file_DistributedMutualExclusion_electionOrganizer_proto_init() {
 			}
 		}
 		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*ElectionReply); i {
+			switch v := v.(*UpdatePortsReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -637,7 +982,7 @@ func file_DistributedMutualExclusion_electionOrganizer_proto_init() {
 			}
 		}
 		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LeaderRequest); i {
+			switch v := v.(*JoinRequest); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -649,7 +994,7 @@ func file_DistributedMutualExclusion_electionOrganizer_proto_init() {
 			}
 		}
 		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*LeaderReply); i {
+			switch v := v.(*JoinReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -661,54 +1006,6 @@ func file_DistributedMutualExclusion_electionOrganizer_proto_init() {
 			}
 		}
 		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CriticalSectionRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*CriticalSectionReply); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GrantAccessRequest); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*GrantAccessReply); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*LeaveRequest); i {
 			case 0:
 				return &v.state
@@ -720,8 +1017,128 @@ func file_DistributedMutualExclusion_electionOrganizer_proto_init() {
 				return nil
 			}
 		}
-		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*LeaveReply); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ElectionRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*ElectionReply); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*LeaderRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*LeaderReply); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CriticalSectionRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*CriticalSectionReply); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GrantAccessRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*GrantAccessReply); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*LeaveCriticalSectionRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_DistributedMutualExclusion_electionOrganizer_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*LeaveCriticalSectionReply); i {
 			case 0:
 				return &v.state
 			case 1:
@@ -739,7 +1156,7 @@ func file_DistributedMutualExclusion_electionOrganizer_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_DistributedMutualExclusion_electionOrganizer_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   10,
+			NumMessages:   16,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

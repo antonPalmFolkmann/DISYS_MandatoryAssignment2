@@ -8,7 +8,34 @@ service CriticalSectionService{
   rpc LeaderDeclaration (LeaderRequest) returns (LeaderReply) {}
   rpc QueueUp (CriticalSectionRequest) returns (CriticalSectionReply) {}
   rpc GrantAccess (GrantAccessRequest) returns (GrantAccessReply) {}
-  rpc LeaveCriticalSection (LeaveRequest) returns (LeaveReply) {}
+  rpc LeaveCriticalSection (LeaveCriticalSectionRequest) returns (LeaveCriticalSectionReply) {}
+  rpc Join(JoinRequest) returns (JoinReply) {}
+  rpc Leave(LeaveRequest) returns (LeaveReply) {}
+  rpc UpdatePorts(UpdatePortsRequest) returns (UpdatePortsReply) {}
+}
+
+message UpdatePortsRequest {
+  string ports = 1;
+}
+
+message UpdatePortsReply {
+  string reply = 1;
+}
+
+message JoinRequest {
+  string port = 1;
+}
+
+message JoinReply {
+  string ports = 1;
+}
+
+message LeaveRequest {
+  string port = 1;
+}
+
+message LeaveReply {
+  string reply = 1;
 }
 
 message ElectionRequest{
@@ -28,7 +55,7 @@ message LeaderReply{
 }
 
 message CriticalSectionRequest{
-  string message = 1;
+  string port = 1;
 }
 
 message CriticalSectionReply {
@@ -37,17 +64,19 @@ message CriticalSectionReply {
 
 message GrantAccessRequest {
   string message = 1;
+  string port = 2;
 }
 
 message GrantAccessReply {
   string reply = 1;
 }
 
-message LeaveRequest {
+message LeaveCriticalSectionRequest {
   string message = 1;
+  string port = 2;
 }
 
-message LeaveReply {
+message LeaveCriticalSectionReply {
   string reply = 1;
 }
 
