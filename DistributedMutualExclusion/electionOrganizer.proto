@@ -64,6 +64,7 @@ message CriticalSectionReply {
 
 message GrantAccessRequest {
   string message = 1;
+  string port = 2;
 }
 
 message GrantAccessReply {
@@ -72,6 +73,7 @@ message GrantAccessReply {
 
 message LeaveCriticalSectionRequest {
   string message = 1;
+  string port = 2;
 }
 
 message LeaveCriticalSectionReply {
