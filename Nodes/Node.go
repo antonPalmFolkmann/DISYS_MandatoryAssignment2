@@ -43,6 +43,7 @@ func main() {
 	input, _ := reader.ReadString('\n')
 	// convert CRLF to LF
 	input = strings.Replace(input, "\n", "", -1)
+	input = strings.Replace(input, "\r", "", -1)
 
 	var n Node
 	n.port = input
@@ -57,6 +58,7 @@ func main() {
 	input2, _ := reader.ReadString('\n')
 	// convert CRLF to LF
 	input2 = strings.Replace(input2, "\n", "", -1)
+	input2 = strings.Replace(input2, "\r", "", -1)
 	leaderPort = input2
 
 	n.sendJoinRequest()
@@ -71,6 +73,7 @@ func main() {
 		input, _ := reader.ReadString('\n')
 		// convert CRLF to LF
 		input = strings.Replace(input, "\n", "", -1)
+		input = strings.Replace(input, "\r", "", -1)
 
 		if strings.Compare("/q", input) == 0 {
 			n.sendQueueUpRequest()
