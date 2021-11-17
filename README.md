@@ -6,3 +6,5 @@ but declare the same leaderport.
 
 When you have created your nodes, type /q in the terminal to queue up that node for the critical section.
 A node will print a message to let you know when it enters and leaves the critical section.
+
+In the code, there are some remnants of an attempt to implement a leader election. This will not be used for now, but perhaps in the next assignment ;)
